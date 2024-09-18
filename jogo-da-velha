@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+
+    int i=0, tam=0, chances=6, acertos=0;
+    char palavra[30], letra[2], secreta[30];
+    _Bool acerto = 0;
+
+    printf("Qual sera a palavra secreta?\n");
+    scanf("%s", &palavra);
+    system("cls");
+
+    while(palavra[i] != '\0'){
+        i++;
+        tam++;
+    }
+
+    for(i=0;i<30;i++){
+        secreta[i]='-';
+    }
+
+    while(chances > 0  && acertos < tam){
+        printf("Chances restantes: %d \n\n", chances);
+        printf("Palavra secreta: ");
+        for(i=0;i<tam;i++){
+            printf("%c", secreta[i]);
+        }
+        printf("\n\nDigite uma letra: ");
+        scanf(" %c", &letra[0]); 
+        for(i=0;i<tam;i++){
+            if(palavra[i]==letra[0]){
+                acerto=1;
+                secreta[i] = palavra[i];
+                acertos++;
+            }
+
+        }
+        if(!acerto){
+            chances--;
+        }
+        acerto=0;
+        system("cls");
+    }   
+
+    if(acertos==tam){
+        printf("Você venceu!");
+    }
+    else{
+        printf("Você perdeu!");
+    }
+
+
+    return 0;
+}
+
